@@ -17,8 +17,12 @@
   "author": "tungns",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "mysql": "^2.10.2"
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.12",
+    "mysql": "^2.10.2",
+    "siege": "^0.2.0"
   },
   "engines": {
     "node": "4.1.1"
