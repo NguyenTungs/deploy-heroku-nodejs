@@ -11,12 +11,13 @@
 		<h3>Lists have {{lists.length}}</h3>
 		<ul>
 			<li ng-repeat="list in lists">
-				{{list.title}}
+				{{list.title}} <span ng-click="func_delete(list._id, $index)">  Delete </span> || <span ng-click="func_edit(list._id)"> Edit </span>
 			</li>
 		</ul>
 
-		<form accept-charset="utf-8" ng-submit="demoSubmit()">
+		<form accept-charset="utf-8" ng-submit="demoSubmit()" id="form-submit">
 			<input type="text" placeholder="Enter your name" ng-model="title"></input>
+			<input type="text" placeholder="Enter ID" ng-model="uuid"></input>
 			<button type="submit">Add</button>
 		</form>
 	</div>
