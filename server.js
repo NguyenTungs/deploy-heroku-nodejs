@@ -1,6 +1,6 @@
 var express = require('express'),
     app = express(),
-    //routes = require('./server/routes/routes'),
+    routes = require('./server/routes/routes'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     config = require('./configurations/config'),
@@ -14,7 +14,7 @@ mongoose.connect(config.config_Mongo.url_mongoose);
 
 //set Routes
 app.use(bodyParser());
-//app.use('/', routes);
+app.use('/', routes);
 app.use('/js', express.static(__dirname + '/client/js'));
 
 app.get('/', function(req, res) {
