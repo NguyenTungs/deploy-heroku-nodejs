@@ -40,6 +40,7 @@ pool.getConnection(function(err, connection) {
 app.use(bodyParser());
 app.use('/', routes);
 app.use('/js', express.static(__dirname + '/client/js'));
+app.use('/html', express.static(__dirname + '/html'));
 
 
 var server = app.listen(app.get('port'), function() {
