@@ -1,0 +1,26 @@
+{
+  "name": "heroku-app",
+  "version": "0.0.1",
+  "description": "Deploying NodeJs Apps On Heroku",
+  "main": "server.js",
+  "scripts": {
+    "test": "Deploying NodeJs Apps On Heroku"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/tungns.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "expressjs"
+  ],
+  "author": "tungns",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mysql": "^2.10.2"
+  },
+  "engines": {
+    "node": "4.1.1"
+  }
+}
