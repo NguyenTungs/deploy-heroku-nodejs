@@ -22,10 +22,21 @@ pool.getConnection(function(err, connection) {
 
     console.log('connected as id ' + connection.threadId);
 
-    connection.query("select * from user", function(err, rows) {
+    connection.query("call scurpks_listoftabs200(0,1,0)", function(err, rows) {
         connection.release();
         if (!err) {
-            res.json(rows);
+            console.info('row--scurpks_listoftabs200-',rows[0][0].PS200);
+            //res.json(rows);
+        }
+    });
+
+
+
+    connection.query("select stdv_tools_stornotabv100(49,'NguyenTung')", function(err, rows) {
+        //connection.release();
+        if (!err) {
+            console.info('row--stdv_tools_stornotabv100-',res.json(rows));
+            //res.json(rows);
         }
     });
 
