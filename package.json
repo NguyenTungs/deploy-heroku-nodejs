@@ -18,11 +18,17 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "fluent-ffmpeg": "^2.0.1",
+    "md5": "^2.1.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.12",
     "mysql": "^2.10.2",
-    "siege": "^0.2.0"
+    "node-uuid": "^1.4.7",
+    "siege": "^0.2.0",
+    "socket.io": "^1.4.5"
   },
   "engines": {
     "node": "4.1.1"
