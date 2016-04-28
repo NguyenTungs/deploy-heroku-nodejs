@@ -124,7 +124,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({ secret: 'keyboard cat', key: 'sid' }));
 
+app.set('views', path.join(__dirname, 'client/views'));
+app.engine('html', require('ejs').__express);
+app.set('view engine', 'html');
+
 app.use('/', routes);
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use('/js', express.static(__dirname + '/client/js'));
 app.use('/admin', express.static(__dirname + '/html/admin'));
 app.use('/html', express.static(__dirname + '/html'));

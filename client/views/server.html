@@ -92,11 +92,19 @@
         oneway: true
     };
 
+    connection.bandwidth = {
+        audio: 192,
+        video: 1024,
+        data: 1638400,
+        screen: 1024 // 300kbps
+    };
+
     var mainSocket = io.connect("//localhost:3000");
 
 
 
-    var oldStreamScreen = null, oldStream;
+    var oldStreamScreen = null,
+        oldStream;
 
     connection.onstream = function(e) {
         console.info('e----', e);
@@ -212,13 +220,17 @@
     var recordAudio, recordVideo;
 
     document.getElementById('start').onclick = function() {
-        console.info('oldStream--',oldStream);
+        console.info('oldStream--', oldStream);
         var options = {
-           type: 'canvas',
-           canvas: {
-              width: 1280,
-              height: 720
-           }
+            type: 'canvas',
+            video: {
+                width: 1280,
+                height: 720
+            },
+            canvas: {
+                width: 1280,
+                height: 720
+            }
         };
         document.getElementById('start').disabled = true;
         recordVideo = RecordRTC(elementToShare, {
@@ -233,8 +245,8 @@
     document.getElementById('stop').onclick = function() {
         this.disabled = true;
         recordVideoSeparately && recordAudio.stopRecording(function() {
-        // stop video recorder
-        recordVideo.stopRecording(function() {
+            // stop video recorder
+            recordVideo.stopRecording(function() {
                 // get audio data-URL
                 recordAudio.getDataURL(function(audioDataURL) {
                     // get video data-URL
