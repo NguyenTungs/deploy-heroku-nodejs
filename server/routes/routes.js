@@ -5,6 +5,12 @@ var express           = require('express'),
     blogController = require('../controllers/blog-controller');
 
 
+
+// require('ejs').filters.fromNow = function(date){
+//   return moment(date).fromNow()
+// }
+
+
 //REST API
 router.post('/api/meetups', demoController.create);
 
@@ -14,9 +20,7 @@ router.get('/api/edit/:id', demoController.edit);
 
 router.delete('/api/meetups', demoController.delete);
 
-router.get('/', function (req, res) {
-  res.sendfile('./client/views/blogs/index.html');
-});
+
 
 router.get('/bandwidth', function (req, res) {
   res.sendfile('./client/views/bandwidth.html');
@@ -51,6 +55,8 @@ router.get('/admin/blog/add_blog', function (req, res) {
   res.sendfile('./client/views/admin/add_blog.html');
 
 });
+
+router.get('/admin/blog/edit_blog/:id', adminController.editB050);
 
 router.get('/admin/blog', function (req, res) {
   if(!req.session.isLogin){
@@ -107,15 +113,18 @@ router.post('/api_admin/del_b050', adminController.delB050);
   BLOGS
  */
 
+router.get('/', function (req, res) {
+  res.render('blogs/index.html');
+});
 
 router.get('/api_blog/listB050', blogController.listB050);
+
+router.get('/:id/:bv051', blogController.readB050ById);
 
 
 /*
 	TEST
  */
-router.get('/test', function(req, res){
-	res.sendfile('./client/views/test.html');
-});
+router.get('/test', demoController.insertK100);
 
 module.exports = router;

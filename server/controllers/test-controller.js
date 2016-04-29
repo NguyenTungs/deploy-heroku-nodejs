@@ -1,4 +1,5 @@
 var Test = require('../models/table_test');
+var K100 = require('../models/k100_model');
 
 module.exports.create = function(req, res) {
 
@@ -66,4 +67,19 @@ module.exports.test = function(req, res) {
     Test.find({}, function(err, results) {
         res.json(results);
     });
+}
+
+module.exports.insertK100 = function(req, res) {
+    var data = {kv101: 'Nguyen Son Tung'}
+    var k100 = new K100(data);
+
+    k100.save(function(err, result) {
+        if (err) {
+            res.json({ rs: 0, result: err });
+        } else {
+            console.info('success');
+        }
+
+    });
+
 }

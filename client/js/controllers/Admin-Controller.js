@@ -10,6 +10,7 @@ adminApp.controller('adminController', ['$scope', '$cookieStore', '$resource', '
     if($cookieStore.get('user')){
         $scope.user  = $cookieStore.get('user');
     }
+
     
 
     $scope.url = $location.protocol() +'://'+ location.host;
@@ -53,8 +54,13 @@ adminApp.controller('adminController', ['$scope', '$cookieStore', '$resource', '
 
     }
 
-    $scope.addSubmit = function() {
-        var encodeString = 'bv051='+encodeURIComponent($scope.bv051)+'&bv052='+encodeURIComponent($scope.bv052)+'&bv053='+encodeURIComponent($scope.bv053)+'&bv054='+encodeURIComponent($scope.bv054)+'&bv055='+encodeURIComponent($scope.bv055);
+    $scope.addSubmit = function(id) {
+        if(!id){
+            var encodeString = 'bv051='+encodeURIComponent($scope.bv051)+'&bv052='+encodeURIComponent($scope.bv052)+'&bv053='+encodeURIComponent($scope.bv053)+'&bv054='+encodeURIComponent($scope.bv054)+'&bv055='+encodeURIComponent($scope.bv055);
+        }else{
+            var encodeString = 'id='+id+'&bv051='+encodeURIComponent($scope.bv051)+'&bv052='+encodeURIComponent($scope.bv052)+'&bv053='+encodeURIComponent($scope.bv053)+'&bv054='+encodeURIComponent($scope.bv054)+'&bv055='+encodeURIComponent($scope.bv055);
+        }
+        
         $http({
             method: 'POST',
             url: '/api_admin/add_b050',
@@ -77,10 +83,11 @@ adminApp.controller('adminController', ['$scope', '$cookieStore', '$resource', '
 adminApp.controller('blogController', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
 
+        $scope.url = $location.protocol() +'://'+ location.host;
+
         $scope.getListB050 = function() {
             $http.get('/api_blog/listB050')
                 .success(function(results) {
-                    console.log("I got the data I requested..................");
                     $scope.lists = results;
                 });
         };

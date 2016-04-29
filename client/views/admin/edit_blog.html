@@ -72,7 +72,7 @@
                         <li><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
                         <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
                         <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-                        <li><a href="{{url}}/admin/blog"><i class="glyphicon glyphicon-list"></i> Blogs</a></li>
+                        <li><a href="admin/blog"><i class="glyphicon glyphicon-list"></i> Blogs</a></li>
                         <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
                         <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
                         <li class="current"><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
@@ -95,33 +95,34 @@
                     <div class="col-md-12">
                         <div class="content-box-large">
                             <div class="panel-heading">
-                                <div class="panel-title">Add Tutorial</div>
+                                <div class="panel-title">Edit Tutorial</div>
                                 <div class="panel-options">
                                     <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
                                     <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
                                 </div>
                             </div>
+                         
                             <div class="panel-body">
                                 <div id="rootwizard">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab1">
-                                            <form class="form-horizontal" role="form" ng-submit="addSubmit()">
+                                            <form class="form-horizontal" role="form" ng-submit="addSubmit('<%=item._id%>')">
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">The Title Post</label>
                                                     <div class="col-sm-10">
-                                                        <input ng-model="bv051" type="text" class="form-control" id="inputEmail3" placeholder="The Title Post">
+                                                        <input ng-init="bv051='<%= item.bv051 %>'" ng-model="bv051" id="inputEmail3" ng-pattern="asasdas" type="text" class="form-control" placeholder="The Title Post">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">The Image Post</label>
                                                     <div class="col-sm-10">
-                                                        <input ng-model="bv052" type="text" class="form-control" id="inputPassword3" placeholder="The Image Post">
+                                                        <input ng-init="bv052='<%= item.bv052 %>'" ng-model="bv052" type="text" class="form-control" id="inputPassword3" placeholder="The Image Post">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="selectType" class="col-sm-2 control-label">Type</label>
                                                     <div class="col-sm-10">
-                                                        <select id="selectType" class="selectpicker"  multiple ng-model="bv055">
+                                                        <select ng-init="bv055='<%= item.bv055 %>'" id="selectType" class="selectpicker"  multiple ng-model="bv055">
                                                             <option value="Mongodb">Mongodb</option>
                                                             <option value="Javascript">Javascript</option>
                                                             <option value="Nodejs">Nodejs</option>
@@ -136,13 +137,13 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">The Description</label>
                                                     <div class="col-sm-10">
-                                                        <textarea ng-model="bv053" class="form-control" placeholder="Textarea" rows="3"></textarea>
+                                                        <textarea ng-init="bv053='<%= item.bv053 %>'" ng-model="bv053" class="form-control" placeholder="Textarea" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">The Content</label>
                                                     <div class="col-sm-10">
-                                                        <textarea ui-tinymce ng-model="bv054"></textarea>
+                                                        <textarea ng-init="bv054='<%=item.bv054%>'" ui-tinymce ng-model="bv054"></textarea>
                                                     </div>
                                                 </div>
                                                 <ul class="pager wizard">

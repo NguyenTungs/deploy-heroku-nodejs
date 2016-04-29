@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('b050', {
+var connection = require('../../configurations/database');
+
+module.exports = connection.db.model('b050', {
 	bv051: String,
 	bv052: String,
 	bv053: String,
